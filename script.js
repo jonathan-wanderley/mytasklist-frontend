@@ -1,4 +1,4 @@
-const url = 'http://localhost:4000/todo';
+const url = 'https://mytasklist-app.herokuapp.com/todo';
 
 
 var newTaskDoneOption = 'false';
