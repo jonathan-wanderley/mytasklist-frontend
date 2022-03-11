@@ -18,7 +18,7 @@
                 <span class="task-text"> </span>
             </div>
             <div class="task-functions">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <i class="fa fa-pencil editTask" aria-hidden="true"></i>
                 <i class="fa fa-times removeTask" aria-hidden="true"></i>
             </div>
         </div>
@@ -106,6 +106,31 @@
             </div>
         </section>
         
+        <div class="edit-taskBox">
+            <div class="edit-taskPainel">
+                <div class="edit-taskTitle">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <h2>Edit Task</h2>
+                </div>
+                <div class="edit-taskItem">
+                    <i class="fa fa-lg fa-square-o" aria-hidden="true"></i>
+                    <input type="text" name="" placeholder="Type your task...">
+                </div>
+                <hr>
+                <div class="edit-taskButtons">
+                    <div class="edit-taskSubmit" onclick="editTask()">
+                        <div>Save Changes</div>
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="edit-taskCancel" onclick="closeEditTaskPainel()">
+                        <div>Cancel</div>
+                        <i class="fa fa-ban" aria-hidden="true"></i>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
     </main>
 
     

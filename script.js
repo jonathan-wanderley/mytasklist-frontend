@@ -43,9 +43,32 @@ function listarTasks(lista, tipo) {
         let taskItem = document.querySelector('.models .task-item').cloneNode(true); 
         taskItem.querySelector('.task-text').innerHTML = item.title;
         
-        //
+        //CHECKS
         taskChecks(item, tipo, taskItem);
         
+        //EDIT
+        taskItem.querySelector('.editTask').addEventListener('click', () => {
+            document.querySelector('.edit-taskBox').style.display = 'flex';
+            document.querySelector('.edit-taskItem input').value = item.title;
+            document.querySelector('.edit-taskBox .edit-taskSubmit').setAttribute("onClick",`editTask(${item.id})`);
+
+            editCheckDone(item);
+
+            let buttonCheck = document.querySelector('.edit-taskItem i')
+            buttonCheck.addEventListener('click', () => {
+                if(buttonCheck.classList.contains('fa-check-square-o')) {
+                    buttonCheck.classList.remove('fa-check-square-o')
+                    buttonCheck.classList.add('fa-square-o')
+                } else {
+                    buttonCheck.classList.add('fa-check-square-o')
+                    buttonCheck.classList.remove('fa-square-o')
+                }
+            })
+
+
+            // document.querySelector('.edit-taskSubmit').onclick = editTask();
+        })
+
         //Excluir Task
         taskItem.querySelector('.removeTask').addEventListener('click', async () => {
             await fetch(`${url}/${item.id}`, { method: 'DELETE' });
@@ -111,6 +134,11 @@ function closeNewTaskPainel() {
     document.querySelector('.new-taskBox').style.display = 'none';
 }
 
+function closeEditTaskPainel() {
+    document.querySelector('.edit-taskBox .edit-taskSubmit').setAttribute("onClick",`editTask()`);
+    document.querySelector('.edit-taskBox').style.display = 'none';
+}
+
 async function addTask() {
     const title = document.querySelector('.new-taskBox .new-taskItem input').value
     
@@ -125,4 +153,31 @@ async function addTask() {
     document.querySelector('.new-taskBox .new-taskItem input').value = '';
     document.querySelector('.new-taskBox').style.display = 'none';
     location.reload();
+}
+
+function editCheckDone(item) {
+    if(item.done){
+        document.querySelector('.edit-taskItem i').classList.remove('fa-square-o');
+        document.querySelector('.edit-taskItem i').classList.add('fa-check-square-o');
+    } else {
+        document.querySelector('.edit-taskItem i').classList.add('fa-square-o');
+        document.querySelector('.edit-taskItem i').classList.remove('fa-check-square-o');
+    }
+    
+}
+
+async function editTask(itemId) {
+    const editTitle = document.querySelector('.edit-taskItem input').value;
+    const editDone = document.querySelector('.edit-taskItem i').classList.contains('fa-check-square-o');
+    
+    await fetch(`${url}/${itemId}`, {
+        method: 'PUT',
+        body: `title=${editTitle}&done=${editDone}`,
+        headers: 
+        {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+    })
+    location.reload();
+    
 }

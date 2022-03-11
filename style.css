@@ -296,3 +296,100 @@ hr {
 .my-tasks.normal {
     margin-bottom: 48px;
 }
+
+
+
+/* EDIT TASKS PAINEL */
+.edit-taskBox {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background-color: #152125e5;
+
+    display: none;
+}
+.edit-taskPainel {
+    width: 55vw;
+    background-color: #fff;
+    padding: 35px 40px;
+    border-radius: 15px;
+    border: 2px solid #152125;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.678);
+}
+.edit-taskTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 0px 0px 5px;
+}
+.edit-taskItem {
+    display: flex;
+    align-items: baseline;
+    background-color: #152125;
+    margin-bottom: 5px;
+    padding: 15px 20px;
+    color: aquamarine;
+    border-radius: 10px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 100%;
+}
+.edit-taskItem i:hover {
+    color: #fff;
+    cursor: pointer;
+    
+}
+.edit-taskItem input {
+    background-color: #152125;
+    border: none;
+    outline: 0;
+    flex: 1;
+    margin-left: 15px;
+    color: aquamarine;
+    font-size: 1.3rem;
+}
+.edit-taskItem input::placeholder {
+    color: rgba(127, 255, 212, 0.404);
+}
+.edit-taskButtons {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+.edit-taskSubmit {
+    background-color: #152125;
+    border: 2px solid #152125;
+    padding: 10px 30px;
+    color: aquamarine;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    color: aquamarine;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+.edit-taskSubmit i {
+    margin-left: 10px;
+}
+.edit-taskCancel {
+    background-color: #fff;
+    padding: 10px 30px;
+    color: #152125;
+    border-radius: 15px;
+    border: 2px solid #152125;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+}
+.edit-taskCancel i {
+    margin-left: 10px;
+}
