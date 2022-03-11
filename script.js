@@ -1,6 +1,33 @@
 const url = 'http://localhost:4000/todo';
-async function getTasksFromApi() {
-    
+
+
+var newTaskDoneOption = 'false';
+document.querySelector('.new-taskBox .new-taskItem i').addEventListener('click', ()=>{
+    if(newTaskDoneOption == 'true') {
+        newTaskDoneOption = 'false';
+        document.querySelector('.new-taskBox .new-taskItem i').classList.remove('fa-check-square-o');
+        document.querySelector('.new-taskBox .new-taskItem i').classList.add('fa-square-o');
+    } else {
+        newTaskDoneOption = 'true';
+        document.querySelector('.new-taskBox .new-taskItem i').classList.add('fa-check-square-o');
+        document.querySelector('.new-taskBox .new-taskItem i').classList.remove('fa-square-o');
+    }
+})
+
+
+//PEGAR E EXIBIR DATA
+function getDate() {
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    document.querySelector('.date-day').innerHTML = day;
+    document.querySelector('.date-month').innerHTML = months[month];
+}
+getDate();
+
+//LISTAS TASKS + FUNÇOES IMPLEMENTADAS
+async function getTasksFromApi() {   
     let requisicao = await fetch(url, { method: 'GET' })
     let json = await requisicao.json();
     let lista = json.list
@@ -71,3 +98,31 @@ function taskChecks(item, tipo, taskItem) {
     }
 }
 getTasksFromApi();
+
+function openNewTaskPainel() {
+    document.querySelector('.new-taskBox').style.display = 'flex';
+}
+
+function closeNewTaskPainel() {
+    document.querySelector('.new-taskBox .new-taskItem input').value = '';
+    newTaskDoneOption = 'false';
+    document.querySelector('.new-taskBox .new-taskItem i').classList.remove('fa-check-square-o');
+    document.querySelector('.new-taskBox .new-taskItem i').classList.add('fa-square-o');
+    document.querySelector('.new-taskBox').style.display = 'none';
+}
+
+async function addTask() {
+    const title = document.querySelector('.new-taskBox .new-taskItem input').value
+    
+    await fetch(url, {
+        method: 'POST',
+        body: `title=${title}&done=${newTaskDoneOption}`,
+        headers: 
+        {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+    })
+    document.querySelector('.new-taskBox .new-taskItem input').value = '';
+    document.querySelector('.new-taskBox').style.display = 'none';
+    location.reload();
+}

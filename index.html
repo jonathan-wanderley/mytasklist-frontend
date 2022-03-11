@@ -10,8 +10,8 @@
     
 </head>
 <body>
-    <div class="models">
-
+    <!-- Apenas um model da task  -->
+    <div class="models"> 
         <div class="task-item">
             <div class="task-info">
                 <i class="fa fa-lg fa-square-o checkTask" aria-hidden="true"></i>
@@ -56,12 +56,37 @@
         <div class="section-up">
             <div class="date">
                 <div class="calendar"><i class="fa fa-2x fa-calendar" aria-hidden="true"></i></div>
-                <div class="date-day">10</div>
-                <div class="date-month">Março</div>
+                <div class="date-day">Day</div>
+                <div class="date-month">Month</div>
             </div>
-            <div class="new-task">
+            <div class="new-task" onclick="openNewTaskPainel()">
                 <div>New Task</div>
                 <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+            
+            <div class="new-taskBox">
+                <div class="new-taskPainel">
+                    <div class="new-taskTitle">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <h2>New Task</h2>
+                    </div>
+                    <div class="new-taskItem">
+                        <i class="fa fa-lg fa-square-o" aria-hidden="true"></i>
+                        <input type="text" name="" placeholder="Type your task...">
+                    </div>
+                    <hr>
+                    <div class="new-taskButtons">
+                        <div class="new-taskSubmit" onclick="addTask()">
+                            <div>Add Task</div>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="new-taskCancel" onclick="closeNewTaskPainel()">
+                            <div>Cancel</div>
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
         <hr>
@@ -80,6 +105,7 @@
                 <!-- Espaco reservado para as tasks  -->
             </div>
         </section>
+        
     </main>
 
     
