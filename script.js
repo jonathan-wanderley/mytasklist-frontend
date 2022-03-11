@@ -16,20 +16,8 @@ function listarTasks(lista, tipo) {
         let taskItem = document.querySelector('.models .task-item').cloneNode(true); 
         taskItem.querySelector('.task-text').innerHTML = item.title;
         
-        //Concluir tarefa
-        taskItem.querySelector('.checkTask').addEventListener('click', async () => {
-            await fetch(`${url}/${item.id}`, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    done: 'true'
-                })
-            })
-            .then((data)=>{
-                location.reload();
-            })
-            .catch((error)=> console.log(error))
-            
-        })
+        //
+        taskChecks(item, tipo, taskItem);
         
         //Excluir Task
         taskItem.querySelector('.removeTask').addEventListener('click', async () => {
@@ -41,5 +29,45 @@ function listarTasks(lista, tipo) {
         //Adicionar a lista
         document.querySelector(`.my-tasks.${tipo} .task-list`).append( taskItem );
     });
+}
+function taskChecks(item, tipo, taskItem) {
+    switch (tipo) {
+        case 'normal':
+            taskItem.querySelector('.checkTask').classList.add('fa-square-o');
+            taskItem.querySelector('.checkTask').classList.remove('fa-check-square-o');
+            taskItem.querySelector('.checkTask').addEventListener('click', async () => {
+                await fetch(`${url}/${item.id}`, {
+                    method: 'PUT',
+                    body: "done=true",
+                    headers: 
+                    {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                })
+                .then((data)=>{
+                    location.reload();
+                })
+                .catch((error)=> console.log(error))
+            })
+            break;
+        case 'completed':
+            taskItem.querySelector('.checkTask').classList.remove('fa-square-o');
+            taskItem.querySelector('.checkTask').classList.add('fa-check-square-o');
+            taskItem.querySelector('.checkTask').addEventListener('click', async () => {
+                await fetch(`${url}/${item.id}`, {
+                    method: 'PUT',
+                    body: "done=false",
+                    headers: 
+                    {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                })
+                .then((data)=>{
+                    location.reload();
+                })
+                .catch((error)=> console.log(error))
+            })
+            break;
+    }
 }
 getTasksFromApi();
