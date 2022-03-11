@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+body {
+    display: flex;
+}
+a {
+    text-decoration: none;
+}
+.models {
+    display: none;
+}
+
+/* MENU LATERAL - ASIDE  */
+aside {
+    position: relative;
+    background-color: #152125;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+    color: #fff;
+    padding: 80px 0px;
+    gap: 20px;
+    height: 100vh;
+}
+.menu-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: none;
+}
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #152125;
+    transition: border 0.5s ease;
+    padding: 15px 20px;
+    border-radius: 13%;
+}
+.logo-area:hover {
+    border: 1px solid rgba(127, 255, 212, 0.986);
+}
+.logo-area .logo {
+    background-color: aquamarine;
+    border-radius: 25%;
+    width: 55px;
+    height: 55px;
+    color: #152125;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-area .logo-title {
+    font-weight: 700;
+}
+aside nav ul {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 5px;
+    
+}
+aside nav ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+aside nav ul li a {
+    margin-left: 5px;
+    color: #fff;
+}
+aside nav ul li i {
+    width: 25px;
+}
+aside nav ul li:hover a,
+aside nav ul li:hover i,
+aside nav ul li.active a,
+aside nav ul li.active i {
+    color: aquamarine;
+}
+.creditos {
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    font-weight: 400;
+    color: aquamarine;
+}
+
+
+
+/* MAIN - PARTE PRINCIPAL */
+main {
+    padding: 40px 50px;
+    flex: 1;
+}
+.section-up {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.new-task {
+    background-color: #152125;
+    padding: 10px 30px;
+    color: aquamarine;
+    border-radius: 15px;
+    display: flex;
+    align-items: baseline;
+    color: aquamarine;
+    font-weight: 600;
+    cursor: pointer;
+}
+.new-task i {
+    margin-left: 8px;
+}
+
+.date {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: #152125;
+}
+.date .calendar {
+    display: flex;
+    align-items: center;
+    margin-right: 6px;
+    
+}
+.date-day {
+    font-size: 2.2rem;
+    font-weight: 600;
+    display: flex;
+    
+}
+.date-month {
+    padding-top: 12px;
+}
+.date-month span {
+    font-weight: 600;
+}
+
+
+hr {
+    border: none;
+    outline: 0;
+    background-color: #152125ec;
+    height: 1px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+
+/* MINHAS TAREFAS - MY TASKS */
+.my-tasks h2 {
+    margin-bottom: 15px;
+}
+.my-tasks ul {
+    list-style: none;
+}
+.task-item {
+    display: flex;
+    align-items: center;
+    background-color: #152125;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    color: aquamarine;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+.task-item:hover {
+    background-color: #1f3136;
+}
+.task-item i:not(:last-child) {
+    margin-right: 10px;
+}
+.task-item i:hover {
+    color: #fff;
+    cursor: pointer;
+}
+.task-item .task-info,
+.task-item .task-functions {
+    display: flex;
+    align-items: center;
+}
+.task-info {
+    flex: 1;
+}
+.my-tasks.normal {
+    margin-bottom: 48px;
+}
