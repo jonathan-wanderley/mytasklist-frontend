@@ -37,6 +37,16 @@ async function getTasksFromApi() {
 
     listarTasks(tasksNormal, 'normal');
     listarTasks(tasksDone, 'completed');
+
+    const loaders = document.querySelectorAll('.lds-ring');
+    loaders.forEach((loader) => {
+        loader.style.display = 'none'
+    })
+
+    const taskLists = document.querySelectorAll('.task-list');
+    taskLists.forEach((taskListItem) => {
+        taskListItem.classList.remove('none');
+    })
 }
 function listarTasks(lista, tipo) {
     lista.forEach(item => {
@@ -179,5 +189,4 @@ async function editTask(itemId) {
         }
     })
     location.reload();
-    
 }
