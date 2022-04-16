@@ -445,6 +445,17 @@ hr {
 
 
 @media screen and (max-width: 1000px) {
+    .logo-area {
+        border: 0px solid #152125;
+        transition: border 0.5s ease;
+    }
+    .logo-area:hover {
+        border: 0px solid rgba(127, 255, 212, 0.986);
+    }
+    .edit-taskPainel,
+    .new-taskPainel {
+        width: 90%;
+    }
     body {
         flex-direction: column;
     }
@@ -508,8 +519,46 @@ hr {
         gap: 10px;
         align-items: start;;
     }
+    .edit-taskButtons {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .edit-taskBox hr {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .edit-taskSubmit,
+    .edit-taskCancel {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }
 @media screen and (max-width: 425px) {
+    .edit-taskPainel,
+    .new-taskPainel {
+        padding: 35px 20px;
+    }
+    .new-taskBox hr {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .edit-taskBox .edit-taskItem input,
+    .new-taskBox .new-taskItem input {
+        font-size: 1rem;
+    }
+    .new-taskButtons {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .new-taskSubmit,
+    .new-taskCancel {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
     main {
         font-size: 14px;
     }
